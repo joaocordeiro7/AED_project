@@ -5,7 +5,9 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include "Classes.h"
 #include "UC.h"
+#include "Student.h"
 
 class Parser {
 public:

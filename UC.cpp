@@ -4,13 +4,11 @@ using namespace std;
 #include <string>
 #include <vector>
 
-void UC::UC(const string& ucCode, const string& classCode){
-    this->ucCode = ucCode;
+UC::UC(const string& ucCode, const string& classCode) : ucCode(ucCode) {
     ClassCode.push_back(classCode);
 }
-
 void UC::loadUC(const string& ucCode, const string& classCode) {
-    ucCode = ucCode;
+    this->ucCode = ucCode;
     ClassCode.push_back(classCode);
 
     // Print UC data to the console

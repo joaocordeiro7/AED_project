@@ -3,21 +3,20 @@ using namespace std;
 #include "Parser.h"
 #include "UC.h"
 
-int main(){
-    Parser parser;
-    // ...
+int main() {
+    Parser parse;
+    vector<UC> ucs;
+    parse.parseUCs("classes_per_uc.csv", ucs);
 
-    // Parse data from CSV files and create UC objects
-    std::vector<UC> ucs;
-    parser.parseUCs("classes_per_uc.csv", ucs);
-
-    // Load data for UC objects
+    // Print the UC data
     for (const UC& uc : ucs) {
-        // Load UC data from the parsed data
-        uc.loadUC(uc.getUCCode(), uc.getClassCode());
+        cout << "UC Code: " << uc.getUCCode() << endl;
+        cout << " class Codes: ";
+        for (const string& classCode : uc.getClassCode()) {
+            cout << classCode << " ";
+        }
+        cout << endl;
     }
-
-    // ...
 
     return 0;
 }

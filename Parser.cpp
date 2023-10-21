@@ -1,14 +1,16 @@
+using namespace std;
 #include "Parser.h"
 #include "UC.h"
 #include "Classes.h"
 #include "Student.h"
 #include <string>
 #include <vector>
+#include <istream>
 #include <sstream>
 #include <fstream>
 #include <iostream>
 
-void Parser::parseUCs(const string& f, vector<vector<string>> ucs){
+void Parser::parseUCs(const string& f, vector<UC>& ucs){
     ifstream file(f);
 
     if(!file.is_open()){
@@ -16,7 +18,7 @@ void Parser::parseUCs(const string& f, vector<vector<string>> ucs){
         return;
     }
     string line;
-    while(getline(f, line)) {
+    while(getline(file, line)) {
         vector<string> row;
         istringstream lineStream(line);
         string cell;
@@ -24,10 +26,9 @@ void Parser::parseUCs(const string& f, vector<vector<string>> ucs){
         while(getline(lineStream, cell, ',')){
             row.push_back(cell);
         }
-        ucs.push_back(row);
         if (row.size() >= 2) {
-            std::string ucCode = row[0];
-            std::string classCode = row[1];
+            string ucCode = row[0];
+            string classCode = row[1];
 
             UC newUC(ucCode, classCode);
 
@@ -54,9 +55,8 @@ void Parser::parseStudent(const string& f, vector<Student>& students){
             row.push_back(cell);
         }
 
-        if (row.size() >= 2) {
-            std::string studentCode = row[0];
-            std::string studentName = row[1];
+        if (row.size() >= 2) {string studentCode = row[0];
+            string studentName = row[1];
 
             Student newStudent(studentCode, studentName);
 
@@ -85,9 +85,9 @@ void Parser::parseClasses(const string& f, vector<Classes>& classes) {
         }
 
         if (row.size() >= 6) {
-            std::string classCode = row[0];
-            std::string ucCode = row[1];
-            std::string weekday = row[2];
+            string classCode = row[0];
+            string ucCode = row[1];
+            string weekday = row[2];
             double startHour = stod(row[3]);
             double duration = stod(row[4]);
             string type = row[5];

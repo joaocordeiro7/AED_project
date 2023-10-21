@@ -1,8 +1,9 @@
-
+using namespace std;
 #ifndef PROJECT_CLASSES_H
 #define PROJECT_CLASSES_H
 #include <string>
 #include <vector>
+#include <iostream>
 
 
 class Classes {
@@ -12,10 +13,9 @@ private:
     string ClassCode;
     string UcCode;
     string Weekday;
-    float StarHour;
+    float StartHour;
     float Duration;
     string Type;
-    vector<string> enrolledStudents;
 };
 
 
